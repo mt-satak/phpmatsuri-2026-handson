@@ -99,7 +99,7 @@ Mac (host)  ─ ソースコードは bind mount で共有（エディタは Mac
    - React 画面の編集が HMR で即時反映されること
    - Wayfinder の型ファイルが `resources/js/` 配下に自動生成されること
    - 結果: すべて確認済み。PHPUnit 40件成功、HTTP 経由のユーザー登録で MySQL に保存、Mac 側の編集で HMR の更新通知を受信
-9. **GitHub リポジトリ化（未実施）**: `mt-satak` 配下に push します。Laravel Cloud のデプロイ元になります。
+9. **GitHub リポジトリ化（実施済み）**: https://github.com/mt-satak/phpmatsuri-2026-handson （Public）。Laravel Cloud ではルートディレクトリに `src` を指定してデプロイします。
 
 ## 5. 事前にご自身で行うこと
 

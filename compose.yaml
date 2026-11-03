@@ -1,4 +1,4 @@
-name: phpmatsuri
+name: phpmatsuri-laravel
 
 services:
   app:
@@ -7,7 +7,7 @@ services:
       args:
         HOST_UID: ${HOST_UID:-1000}
         HOST_GID: ${HOST_GID:-1000}
-    image: phpmatsuri-app:php8.5.12-node26.13.0
+    image: phpmatsuri-laravel-app:php8.5.12-node26.13.0
     environment:
       SERVER_HOST: 0.0.0.0 # php artisan serve をコンテナ外から見えるようにする
     volumes:

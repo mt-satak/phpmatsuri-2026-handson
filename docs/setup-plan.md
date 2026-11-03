@@ -77,7 +77,7 @@ Mac (host)  ─ ソースコードは bind mount で共有（エディタは Mac
 
 ## 4. 構築手順（2026/11/03 実施済み）
 
-作業ディレクトリ: `/Users/satak/dev/phpmatsuri`
+作業ディレクトリ: `/Users/satak/dev/phpmatsuri_Laravel`（compose プロジェクト名: `phpmatsuri-laravel`）
 
 1. **Docker 構成ファイル作成**: `Dockerfile` / `compose.yaml` / `Makefile`
 2. **イメージビルド**: `docker compose build`

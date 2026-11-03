@@ -1,0 +1,3 @@
+# ホスト UID/GID などローカル専用の設定
+.env
+.DS_Store

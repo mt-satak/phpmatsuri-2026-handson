@@ -1,0 +1,44 @@
+name: phpmatsuri
+
+services:
+  app:
+    build:
+      context: .
+      args:
+        HOST_UID: ${HOST_UID:-1000}
+        HOST_GID: ${HOST_GID:-1000}
+    image: phpmatsuri-app:php8.5.12-node26.13.0
+    environment:
+      SERVER_HOST: 0.0.0.0 # php artisan serve をコンテナ外から見えるようにする
+    volumes:
+      - ./src:/var/www/html
+      - composer-cache:/home/dev/.composer/cache
+      - npm-cache:/home/dev/.npm
+    ports:
+      - "127.0.0.1:8000:8000" # Laravel (php artisan serve)
+      - "127.0.0.1:5173:5173" # Vite dev server / HMR
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  mysql:
+    image: mysql:9.7.4
+    environment:
+      MYSQL_DATABASE: laravel
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - mysql-data:/var/lib/mysql
+    ports:
+      - "127.0.0.1:3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uroot", "-ppassword"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+volumes:
+  mysql-data:
+  composer-cache:
+  npm-cache:
